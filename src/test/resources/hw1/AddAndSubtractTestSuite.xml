@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Add and subtract suite">
+
+    <test name="Add and subtract test">
+        <groups>
+            <run>
+                <include name="addAndSubtract"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="hw1.CalculatorSubtractionTest"></class>
+        </classes>
+    </test>
+</suite>
