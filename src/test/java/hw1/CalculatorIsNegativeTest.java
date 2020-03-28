@@ -8,14 +8,7 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
-public class CalculatorIsNegativeTest {
-
-    private Calculator calculator;
-
-    @BeforeMethod
-    public void setUp() {
-        calculator = new Calculator();
-    }
+public class CalculatorIsNegativeTest extends AbstractBaseTest {
 
     @DataProvider
     public Object[][] isDigitNegativeDataProvider() {
@@ -32,8 +25,4 @@ public class CalculatorIsNegativeTest {
         assertEquals(calculator.isNegative(val), expected);
     }
 
-    @AfterMethod
-    public void tearDown(){
-        calculator = null;
-    }
 }

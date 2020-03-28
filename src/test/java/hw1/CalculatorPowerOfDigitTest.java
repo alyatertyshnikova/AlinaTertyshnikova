@@ -8,14 +8,7 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
-public class CalculatorPowerOfDigitTest {
-
-    private Calculator calculator;
-
-    @BeforeMethod
-    public void setUp(){
-        calculator = new Calculator();
-    }
+public class CalculatorPowerOfDigitTest extends AbstractBaseTest{
 
     @DataProvider
     public Object[][] powDigitsDataProvider(){
@@ -31,8 +24,4 @@ public class CalculatorPowerOfDigitTest {
         assertEquals(calculator.pow(a, b), expected);
     }
 
-    @AfterMethod
-    public void tearDown(){
-        calculator = null;
-    }
 }

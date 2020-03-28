@@ -8,14 +8,7 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
-public class CalculatorSubtractionTest {
-
-    private Calculator calculator;
-
-    @BeforeMethod(alwaysRun = true)
-    public void setUp() {
-        calculator = new Calculator();
-    }
+public class CalculatorSubtractionTest extends AbstractBaseTest{
 
     @DataProvider
     public Object[][] subDigitsDataProvider() {
@@ -31,8 +24,4 @@ public class CalculatorSubtractionTest {
         assertEquals(calculator.sub(a, b), expected);
     }
 
-    @AfterMethod
-    public void tearDown() {
-        calculator = null;
-    }
 }

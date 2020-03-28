@@ -8,14 +8,7 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
-public class CalculatorDivideTest {
-
-    private Calculator calculator;
-
-    @BeforeMethod(alwaysRun = true)
-    public void setUp() {
-        calculator = new Calculator();
-    }
+public class CalculatorDivideTest extends AbstractBaseTest {
 
     @DataProvider
     public Object[][] divideDigitsDataProvider() {
@@ -33,8 +26,4 @@ public class CalculatorDivideTest {
         assertEquals(calculator.div(a, b), expected);
     }
 
-    @AfterMethod
-    public void tearDown() {
-        calculator = null;
-    }
 }

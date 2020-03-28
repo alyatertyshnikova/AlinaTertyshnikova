@@ -2,14 +2,9 @@
 <suite name="Calculator suite">
 
     <test name="Calculator test">
-        <classes>
-            <class name="hw1.CalculatorSubtractionTest"></class>
-            <class name="hw1.CalculatorMultiplyTest"></class>
-            <class name="hw1.CalculatorPowerOfDigitTest"></class>
-            <class name="hw1.CalculatorSineOfDigitTest"></class>
-            <class name="hw1.CalculatorIsNegativeTest"></class>
-            <class name="hw1.CalculatorDivideTest"></class>
-        </classes>
+        <packages>
+            <package name="hw1"></package>
+        </packages>
     </test>
 
 </suite>

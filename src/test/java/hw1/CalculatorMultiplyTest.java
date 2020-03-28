@@ -8,14 +8,7 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
-public class CalculatorMultiplyTest {
-
-    private Calculator calculator;
-
-    @BeforeMethod(alwaysRun = true)
-    public void setUp() {
-        calculator = new Calculator();
-    }
+public class CalculatorMultiplyTest extends AbstractBaseTest{
 
     @DataProvider
     public Object[][] multiplyDigitsDataProvider() {
@@ -26,14 +19,9 @@ public class CalculatorMultiplyTest {
         };
     }
 
-
     @Test(dataProvider = "multiplyDigitsDataProvider", groups = {"multiplyAndDivide"})
     public void multiplyDigits(double a, double b, double expected) {
         assertEquals(calculator.mult(a, b), expected);
     }
 
-    @AfterMethod
-    public void tearDown() {
-        calculator = null;
-    }
 }
