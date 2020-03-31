@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Multiply and divide suite">
+
+    <test name="Multiply and divide test">
+        <groups>
+            <run>
+                <include name="multiplyAndDivide"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="hw1.CalculatorMultiplyTest"></class>
+            <class name="hw1.CalculatorDivideTest"></class>
+        </classes>
+    </test>
+</suite>
