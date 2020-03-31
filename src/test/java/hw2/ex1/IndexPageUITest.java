@@ -10,7 +10,7 @@ import org.testng.asserts.SoftAssert;
 
 import java.util.List;
 
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertTrue;
 
 public class IndexPageUITest extends AbstractBaseTest {
 
@@ -23,20 +23,21 @@ public class IndexPageUITest extends AbstractBaseTest {
         softAssert.assertTrue(waitForTitle("Home Page"));
 
         // 3. Perform login
-        waitForElementLocatedBy(By.id("user-icon")).click();
+        waitForElementToBeClickable(By.id("user-icon")).click();
         waitForElementLocatedBy(By.id("name")).sendKeys("Roman");
         waitForElementLocatedBy(By.id("password")).sendKeys("Jdi1234");
-        waitForElementLocatedBy(By.id("login-button")).click();
+        waitForElementToBeClickable(By.id("login-button")).click();
 
         // 4. Assert Username is loggined
         softAssert.assertEquals(waitForElementLocatedBy(By.id("user-name")).getText(), "ROMAN IOVLEV");
 
         // 5. Assert that there are 4 items on the header section are displayed and they have proper text
-        List<WebElement> headerItems = waitForAllElementsLocatedBy(By.cssSelector(".uui-navigation.nav.navbar-nav.m-l8 > li"));
+        String[] headerItems = waitForAllElementsLocatedBy(By.cssSelector(".m-l8 > li")).stream()
+                .map(WebElement::getText)
+                .toArray(String[]::new);
         String[] headerExpectedItems = {"HOME", "CONTACT FORM", "SERVICE", "METALS & COLORS"};
-        for (int i = 0; i < headerExpectedItems.length; i++) {
-            assertEquals(headerItems.get(i).getText(), headerExpectedItems[i]);
-        }
+        softAssert.assertEquals(headerItems, headerExpectedItems);
+
 
         // 6. Assert that there are 4 images on the Index Page and they are displayed
         List<WebElement> images = waitForAllElementsLocatedBy(By.className("benefit-icon"));
@@ -44,13 +45,14 @@ public class IndexPageUITest extends AbstractBaseTest {
         images.forEach((WebElement image) -> assertTrue(image.isDisplayed()));
 
         // 7. Assert that there are 4 tets on the Index Page under icons and they have proper text
-        List<WebElement> texts = waitForAllElementsLocatedBy(By.className("benefit"));
+        String[] texts = waitForAllElementsLocatedBy(By.className("benefit")).stream()
+                .map(WebElement::getText)
+                .toArray(String[]::new);
         String[] expectedTexts = {"To include good practices\nand ideas from successful\nEPAM project",
                 "To be flexible and\ncustomizable", "To be multiplatform",
                 "Already have good base\n(about 20 internal and\nsome external projects),\nwish to get more…"};
-        for (int i = 0; i < expectedTexts.length; i++) {
-            softAssert.assertEquals(texts.get(i).getText(), expectedTexts[i]);
-        }
+        softAssert.assertEquals(texts, expectedTexts);
+
 
         // 8. Assert that there is the iframe with "Frame Button" exist
         WebElement frame = waitForElementLocatedBy(By.id("frame"));
@@ -58,17 +60,17 @@ public class IndexPageUITest extends AbstractBaseTest {
 
         // 9. Switch to the iframe and check that there is "Frame Button" in the iframe
         new WebDriverWait(driver, 10).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frame));
-        softAssert.assertTrue(waitForElementLocatedBy(By.id("frame-button")).isDisplayed());
+        softAssert.assertTrue(waitForElementToBeClickable(By.id("frame-button")).isDisplayed());
 
         // 10. Switch to original window back
         driver.switchTo().defaultContent();
 
         // 11. Assert that there are 5 items in the Left Section are displayed and they have proper text
-        List<WebElement> leftSectionItems = waitForAllElementsLocatedBy(By.cssSelector(".sidebar-menu > li"));
+        String[] leftSectionItems = waitForAllElementsLocatedBy(By.cssSelector(".sidebar-menu > li")).stream()
+                .map(WebElement::getText)
+                .toArray(String[]::new);
         String[] leftSectionExpectedItems = {"Home", "Contact form", "Service", "Metals & Colors", "Elements packs"};
-        for (int i = 0; i < leftSectionExpectedItems.length; i++) {
-            softAssert.assertEquals(leftSectionItems.get(i).getText(), leftSectionExpectedItems[i]);
-        }
+        softAssert.assertEquals(leftSectionItems, leftSectionExpectedItems);
 
         softAssert.assertAll();
     }

@@ -33,17 +33,22 @@ public class AbstractBaseTest {
 
     protected WebElement waitForElementLocatedBy(By by) {
         return new WebDriverWait(driver, 7)
-                .until(ExpectedConditions.presenceOfElementLocated(by));
+                .until(ExpectedConditions.visibilityOfElementLocated(by));
     }
 
     protected List<WebElement> waitForAllElementsLocatedBy(By by) {
         return new WebDriverWait(driver, 7)
-                .until(ExpectedConditions.presenceOfAllElementsLocatedBy(by));
+                .until(ExpectedConditions.visibilityOfAllElementsLocatedBy(by));
     }
 
     protected Boolean waitForTitle(String title) {
         return new WebDriverWait(driver, 10)
                 .until(ExpectedConditions.titleIs(title));
+    }
+
+    protected WebElement waitForElementToBeClickable(By by){
+        return new WebDriverWait(driver, 7)
+                .until(ExpectedConditions.elementToBeClickable(by));
     }
 
 }
