@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Jdi-testing UI suite">
+
+    <test name="Jdi-testing UI test">
+        <packages>
+            <package name="hw2.*"></package>
+        </packages>
+    </test>
+
+</suite>
