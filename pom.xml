@@ -56,10 +56,20 @@
         <profile>
             <id>jdiTestingUI</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
                 <suite.xml>${project.suitesdir}/hw2/JdiTestingUITestSuite.xml</suite.xml>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>jdiTestingUIUsingPO</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <suite.xml>${project.suitesdir}/hw3/JdiTestingUIUsingPOTestSuite.xml</suite.xml>
             </properties>
         </profile>
     </profiles>
