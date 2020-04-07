@@ -1,0 +1,18 @@
+Layers have already implemented:
+Тестовая логика (реализована в классах TableWithPagesPageUITest, MetalsAndColorsPageUITest)
+Реализация тестовой логики и Сервисы объединены и используют PageObjects
+К уровню Сервисы также относятся компоненты(composites)
+Работа с тестовыми данными (источники тестовых данных: DataProvider)
+Запуск тестов (test runner - testNg, наборы тестов, которые будут запускаться описаны в xml файлах(JdiTestingUINewPagesTestSuite),
+    действия до и после запуска тестов - AbstractBaseTest)
+Конфигурация (Пароль и логин необходимые для авторизации в UserData.properties)
+Утилиты (Класс ResourceProperty для работы с .properties файлами)
+
+Layers have already missed:
+Отчеты+логирование
+
+How could be current solution improved:
+Добавить уровень "отчеты+логирование", использовать Allure,
+    он соберёт информацию о прохождении тестов и упростит поиск причины падения тестов
+Использовать Step Design Pattern, он улучшит читаемость тестов.
+При использовании этого паттерна также будут лучше разграничены уровни "Сервисы" и "Тестовая реализация"
