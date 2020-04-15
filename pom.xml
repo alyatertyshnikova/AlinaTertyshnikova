@@ -17,6 +17,8 @@
         <webdrivermanager.version>3.8.1</webdrivermanager.version>
         <allure.version>2.13.2</allure.version>
         <aspectj.version>1.9.5</aspectj.version>
+        <cucumber.version>5.6.0</cucumber.version>
+        <json-simple.version>1.1.1</json-simple.version>
 
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
@@ -89,10 +91,20 @@
         <profile>
             <id>jdiTestingUIUsingSteps</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
                 <suite.xml>${project.suitesdir}/hw5/JdiTestingUIUsingStepsTestSuite.xml</suite.xml>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>jdiTestingUIUsingCucumber</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <suite.xml>${project.suitesdir}/hw6/JdiTestingUIUsingCucumberTestSuite.xml</suite.xml>
             </properties>
         </profile>
     </profiles>
@@ -130,6 +142,26 @@
             <artifactId>allure-testng</artifactId>
             <version>${allure.version}</version>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${cucumber.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-testng</artifactId>
+            <version>${cucumber.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.googlecode.json-simple</groupId>
+            <artifactId>json-simple</artifactId>
+            <version>${json-simple.version}</version>
         </dependency>
 
     </dependencies>
