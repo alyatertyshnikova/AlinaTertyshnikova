@@ -1,12 +1,15 @@
 package hw6.steps;
 
+import hw6.MapTable;
 import hw6.WebDriverSingleton;
 import hw6.pages.UserTablePage;
 import io.cucumber.datatable.DataTable;
+import io.cucumber.java.DataTableType;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
@@ -14,6 +17,18 @@ import static org.testng.Assert.assertTrue;
 public class UserTablePageSteps {
 
     UserTablePage userTablePage = new UserTablePage(WebDriverSingleton.INSTANCE.getDriver());
+
+    @DataTableType
+    public MapTable defineTableColumns(DataTable dataTable) {
+        return new MapTable(dataTable.transpose().asLists().stream()
+                .collect(
+                        Collectors.toMap(
+                                column -> column.get(0),
+                                column -> column.subList(1, column.size())
+                        )
+                )
+        );
+    }
 
     @When("I select 'vip' checkbox for {string}")
     public void iSelectVipCheckboxFor(String username) {
@@ -47,10 +62,10 @@ public class UserTablePageSteps {
     }
 
     @Then("User table should contain following values:")
-    public void userTableShouldContainValues(DataTable values) {
-        assertEquals(userTablePage.getIndexes(), values.rows(1).column(0));
-        assertEquals(userTablePage.getUsernames(), values.rows(1).column(1));
-        assertEquals(userTablePage.getDescriptionTexts(), values.rows(1).column(2));
+    public void userTableShouldContainValues(MapTable table) {
+        assertEquals(userTablePage.getIndexes(), table.getTableValues("Number"));
+        assertEquals(userTablePage.getUsernames(), table.getTableValues("User"));
+        assertEquals(userTablePage.getDescriptionTexts(), table.getTableValues("Description"));
     }
 
     @Then("droplist should contain values in column Type for user {word}")
