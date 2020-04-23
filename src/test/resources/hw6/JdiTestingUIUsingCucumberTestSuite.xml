@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Jdi-testing UI using Cucumber suite">
+
+    <test name="Jdi-testing UI using Cucumber test">
+        <classes>
+            <class name="hw6.RunCucumberTest"/>
+        </classes>
+    </test>
+
+</suite>
