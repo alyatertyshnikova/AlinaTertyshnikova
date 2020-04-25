@@ -23,6 +23,9 @@ public class JdiTest {
     @BeforeMethod(alwaysRun = true)
     public void beforeSuite() {
         PageFactory.initSite(JdiSite.class);
+        JdiSite.open();
+        JdiSite.indexPage.login(User.ROMAN);
+        JdiSite.headerMenu.select(HeaderMenuData.METALS_AND_COLORS);
     }
 
     @AfterMethod(alwaysRun = true)
@@ -32,18 +35,7 @@ public class JdiTest {
 
     @Test(dataProvider = "jdiSubmitMetalsAndColorsFormDataProvider")
     public void jdiSubmitMetalsAndColorsForm(MetalsAndColorsData metalsAndColorsData) {
-        JdiSite.open();
-        JdiSite.indexPage.login(User.ROMAN);
-        JdiSite.headerMenu.select(HeaderMenuData.METALS_AND_COLORS);
-
-        String[] summary = metalsAndColorsData.getSummary();
-        JdiSite.metalsAndColorsPage.selectSummary(summary[0], summary[1]);
-        JdiSite.metalsAndColorsPage.selectElements(metalsAndColorsData.getElements());
-        JdiSite.metalsAndColorsPage.selectColors(metalsAndColorsData.getColor());
-        JdiSite.metalsAndColorsPage.selectMetals(metalsAndColorsData.getMetals());
-        JdiSite.metalsAndColorsPage.selectVegetables(metalsAndColorsData.getVegetables());
-        JdiSite.metalsAndColorsPage.clickSubmitButton();
-
+        JdiSite.metalsAndColorsPage.submitJdiMetalsAndColorsForm(metalsAndColorsData);
         assertTrue(metalsAndColorsData.getNonDefaultResultStrings().containsAll(JdiSite.metalsAndColorsPage.getResult()));
     }
 }
