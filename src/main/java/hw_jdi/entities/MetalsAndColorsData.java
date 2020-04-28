@@ -20,7 +20,7 @@ public class MetalsAndColorsData {
     private String metals;
     private String[] vegetables;
 
-    public List<String> getNonDefaultResultStrings() {
+    public String[] getNonDefaultResultStrings() {
         List<String> result = new LinkedList<>();
         if (isNotEmpty(summary[0]) && isNotEmpty(summary[1])) {
             int sum = Arrays.stream(summary).mapToInt(Integer::parseInt).sum();
@@ -38,6 +38,6 @@ public class MetalsAndColorsData {
         if (vegetables.length != 0) {
             result.add("Vegetables: " + String.join(", ", vegetables));
         }
-        return result;
+        return result.toArray(new String[0]);
     }
 }

@@ -10,7 +10,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertTrue;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.contains;
 
 public class JdiTest {
     @DataProvider
@@ -36,6 +37,6 @@ public class JdiTest {
     @Test(dataProvider = "jdiSubmitMetalsAndColorsFormDataProvider")
     public void jdiSubmitMetalsAndColorsForm(MetalsAndColorsData metalsAndColorsData) {
         JdiSite.metalsAndColorsPage.submitJdiMetalsAndColorsForm(metalsAndColorsData);
-        assertTrue(metalsAndColorsData.getNonDefaultResultStrings().containsAll(JdiSite.metalsAndColorsPage.getResult()));
+        assertThat(JdiSite.metalsAndColorsPage.getResult(), contains(metalsAndColorsData.getNonDefaultResultStrings()));
     }
 }
