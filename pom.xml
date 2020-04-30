@@ -19,6 +19,11 @@
         <aspectj.version>1.9.5</aspectj.version>
         <cucumber.version>5.6.0</cucumber.version>
         <json-simple.version>1.1.1</json-simple.version>
+        <jdi.version>1.2.3</jdi.version>
+        <guava.version>22.0</guava.version>
+        <jackson.version>2.9.8</jackson.version>
+        <lombok.version>1.18.12</lombok.version>
+        <junit.version>3.8.1</junit.version>
 
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
@@ -101,10 +106,22 @@
         <profile>
             <id>jdiTestingUIUsingCucumber</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
                 <suite.xml>${project.suitesdir}/hw6/JdiTestingUIUsingCucumberTestSuite.xml</suite.xml>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>jdiTestingUIUsingJdiLight</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <domain>https://jdi-testing.github.io/jdi-light</domain>
+                <driver>chrome</driver>
+                <suite.xml>${project.suitesdir}/hw_jdi/JdiTestingUIUsingJdiLightTestSuite.xml</suite.xml>
             </properties>
         </profile>
     </profiles>
@@ -131,11 +148,11 @@
             <version>${selenium.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>io.github.bonigarcia</groupId>
-            <artifactId>webdrivermanager</artifactId>
-            <version>${webdrivermanager.version}</version>
-        </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>io.github.bonigarcia</groupId>-->
+        <!--            <artifactId>webdrivermanager</artifactId>-->
+        <!--            <version>${webdrivermanager.version}</version>-->
+        <!--        </dependency>-->
 
         <dependency>
             <groupId>io.qameta.allure</groupId>
@@ -164,6 +181,36 @@
             <version>${json-simple.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.epam.jdi</groupId>
+            <artifactId>jdi-light-html</artifactId>
+            <version>${jdi.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -209,6 +256,12 @@
                 </configuration>
             </plugin>
         </plugins>
+        <testResources>
+            <testResource>
+                <directory>src/test/resources/hw_jdi</directory>
+                <filtering>true</filtering>
+            </testResource>
+        </testResources>
     </build>
 
 </project>
