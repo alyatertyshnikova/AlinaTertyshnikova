@@ -1,0 +1,20 @@
+[
+  {
+    "wordWithError": "превед",
+    "lang": "ru",
+    "options": 0,
+    "correctWord": "привет"
+  },
+  {
+    "wordWithError": "helo",
+    "lang": "en",
+    "options": 0,
+    "correctWord": "hello"
+  },
+  {
+    "wordWithError": "вiтаня",
+    "lang": "uk",
+    "options": 0,
+    "correctWord": "вітання"
+  }
+]
