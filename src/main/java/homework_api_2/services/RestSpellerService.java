@@ -5,12 +5,17 @@ import homework_api_2.dto.WordDto;
 
 public class RestSpellerService {
 
-    private static final String CHECK_TEXT_URI = "/services/spellservice.json/checkText";
-
     public ErrorDto[] getCheckTextResult(WordDto wordDto) {
         return new CommonService()
-                .get(CHECK_TEXT_URI, wordDto)
+                .getWithParams(URI.CHECK_TEXT_URI, wordDto.toParamsMap())
                 .getBody()
                 .as(ErrorDto[].class);
+    }
+
+    public ErrorDto[][] getCheckTextsResult(WordDto wordDto) {
+        return new CommonService()
+                .getWithParams(URI.CHECK_TEXTS_URI, wordDto.toParamsMap())
+                .getBody()
+                .as(ErrorDto[][].class);
     }
 }
