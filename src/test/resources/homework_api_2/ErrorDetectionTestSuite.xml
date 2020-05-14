@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Error detection test suite">
+    <test name="Error detection test">
+        <classes>
+            <class name="homework_api_2.ErrorDetectionTest"/>
+        </classes>
+    </test>
+</suite>

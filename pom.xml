@@ -24,6 +24,8 @@
         <jackson.version>2.9.10.4</jackson.version>
         <lombok.version>1.18.12</lombok.version>
         <junit.version>3.8.1</junit.version>
+        <rest-assured.version>4.2.0</rest-assured.version>
+        <assertj-core.version>3.16.0</assertj-core.version>
 
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
@@ -116,12 +118,32 @@
         <profile>
             <id>jdiTestingUIUsingJdiLight</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
                 <domain>https://jdi-testing.github.io/jdi-light</domain>
                 <driver>chrome</driver>
                 <suite.xml>${project.suitesdir}/hw_jdi/JdiTestingUIUsingJdiLightTestSuite.xml</suite.xml>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>apiErrorAttributesDefinition</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.xml>${project.suitesdir}/homework_api_2/ErrorAttributesDefinitionTestSuite.xml</suite.xml>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>apiErrorDetection</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <suite.xml>${project.suitesdir}/homework_api_2/ErrorDetectionTestSuite.xml</suite.xml>
             </properties>
         </profile>
     </profiles>
@@ -131,7 +153,7 @@
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>${testng.version}</version>
-            <scope>test</scope>
+            <!--            <scope>test</scope>-->
         </dependency>
 
         <dependency>
@@ -211,6 +233,18 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>${rest-assured.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj-core.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -258,7 +292,7 @@
         </plugins>
         <testResources>
             <testResource>
-                <directory>src/test/resources/hw_jdi</directory>
+                <directory>src/test/resources/homework_api_2</directory>
                 <filtering>true</filtering>
             </testResource>
         </testResources>
