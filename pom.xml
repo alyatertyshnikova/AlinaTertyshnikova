@@ -23,7 +23,7 @@
         <guava.version>22.0</guava.version>
         <jackson.version>2.9.10.4</jackson.version>
         <lombok.version>1.18.12</lombok.version>
-        <junit.version>3.8.1</junit.version>
+        <junit.version>4.13.1</junit.version>
         <rest-assured.version>4.2.0</rest-assured.version>
         <assertj-core.version>3.16.0</assertj-core.version>
 
