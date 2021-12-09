@@ -21,7 +21,7 @@
         <json-simple.version>1.1.1</json-simple.version>
         <jdi.version>1.2.3</jdi.version>
         <guava.version>22.0</guava.version>
-        <jackson.version>2.9.10.4</jackson.version>
+        <jackson.version>2.9.10.8</jackson.version>
         <lombok.version>1.18.12</lombok.version>
         <junit.version>3.8.1</junit.version>
         <rest-assured.version>4.2.0</rest-assured.version>
